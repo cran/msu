@@ -1,24 +1,23 @@
 Package: msu
 Title: Multivariate Symmetric Uncertainty and Other Measurements
-Version: 0.0.1
+Version: 0.1.0
 Authors@R: c(person("Gustavo", "Sosa", email = "gsosa.py@gmail.com",
     role = "aut"), person("Elias", "Maciel", email =
     "eliasmacielr@gmail.com", role = "cre"))
 Description: Estimators for multivariate symmetrical uncertainty based
-    on the work of Gustavo Sosa et al. (2016) <arXiv:1709.08730>,
-    total correlation, information gain and symmetrical uncertainty of
-    categorical variables.
+    on the work of Gustavo Sosa et al. (2016)
+    <doi:10.48550/arXiv.1709.08730>, total correlation, information gain
+    and symmetrical uncertainty of categorical variables.
 Depends: R (>= 3.4.1)
-Imports: entropy (>= 1.2.1)
+Imports: infotheo (>= 1.2.0)
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
-LazyData: true
 RoxygenNote: 6.0.1
 Suggests: testthat
 NeedsCompilation: no
-Packaged: 2017-09-30 14:50:55 UTC; emaciel
+Packaged: 2026-10-06 23:26:15 UTC; eliasmaciel
 Author: Gustavo Sosa [aut],
   Elias Maciel [cre]
 Maintainer: Elias Maciel <eliasmacielr@gmail.com>
 Repository: CRAN
-Date/Publication: 2017-09-30 16:26:00 UTC
+Date/Publication: 2026-10-06 23:50:02 UTC

@@ -23,7 +23,7 @@
 #' @param table_variables A list of factors as categorical variables.
 #' @param table_class A factor representing the class of the case.
 #' @return Total correlation estimation for the variable set
-#'     {\code{table.variables}, \code{table.class}}.
+#'     \{\code{table_variables}, \code{table_class}\}.
 #' @name total_correlation
 NULL
 
@@ -45,17 +45,8 @@ NULL
 #' }
 #' @export
 total_correlation <- function(table_variables, table_class) {
-  independent_entropy <- msu::H(table_class)
-  for (i in 1:length(table_variables)) {
-    independent_entropy <- independent_entropy + msu::H(table_variables[[i]])
-  }
-
-  dependent_entropy <- msu::multivar_joint_H(table_variables, table_class)
-  if (independent_entropy < dependent_entropy) {
-    stop('ERROR: total correlation value is incorrect.')
-  }
-
-  return (independent_entropy - dependent_entropy)
+  return (nats_to_bits(
+    infotheo::multiinformation(data.frame(table_variables, table_class))))
 }
 # ------------------------------------------------------------------------------
 

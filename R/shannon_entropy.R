@@ -31,7 +31,7 @@ NULL
 #' The Shannon entropy estimates the average minimum number of bits
 #' needed to encode a string of symbols, based on the frequency of the
 #' symbols (see
-#' \url{http://www.bearcave.com/misl/misl_tech/wavelets/compression/shannon.html}).
+#' \url{http://bearcave.com/misl/misl_tech/wavelets/compression/shannon.html}).
 #' @rdname shannon_entropy
 #' @examples
 #' shannon_entropy(factor(c(1,0)))
@@ -46,7 +46,7 @@ shannon_entropy <- function(x) {
     stop("value passed is not of type factor")
   }
 
-  return (entropy::entropy.plugin(table(x), unit = "log2"))
+  return (nats_to_bits(infotheo::entropy(x)))
 }
 # ------------------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ joint_shannon_entropy <- function(x, y) {
     stop("one or both values passed are not of type factor")
   }
 
-  return (entropy::entropy.plugin(table(x, y), unit = "log2"))
+  return (nats_to_bits(infotheo::entropy(data.frame(x, y))))
 }
 # ------------------------------------------------------------------------------
 
@@ -103,7 +103,7 @@ joint_H <- joint_shannon_entropy
 #' @param table_variables A list of factors as categorical variables.
 #' @param table_class A factor representing the class of the case.
 #' @return Joint Shannon entropy estimation for the variable set
-#'     {\code{table.variables}, \code{table.class}}.
+#'     \{\code{table_variables}, \code{table_class}\}.
 #' @name multivar_joint_shannon_entropy
 NULL
 
@@ -124,9 +124,8 @@ NULL
 #'     \code{\link{joint_shannon_entropy}} for the entropy
 #'     associated with two random variables.
 multivar_joint_shannon_entropy <- function(table_variables, table_class) {
-  return (entropy::entropy.plugin(table(data.frame(table_variables,
-                                                   table_class)),
-                                  unit = 'log2'))
+  return (nats_to_bits(
+    infotheo::entropy(data.frame(table_variables, table_class))))
 }
 # ------------------------------------------------------------------------------
 
